@@ -26,6 +26,7 @@ import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdSize;
 import com.google.android.gms.ads.AdView;
 import com.nevermissacall.R;
+import com.nevermissacall.adapters.CallListner;
 import com.nevermissacall.adapters.CallLogsArrayAdapter;
 import com.nevermissacall.ads.ToastAdListener;
 import com.nevermissacall.data.CallLogModel;
@@ -53,6 +54,7 @@ public class MainActivity extends Activity implements OnItemClickListener, OnIte
 		try {
 			this.requestWindowFeature(Window.FEATURE_NO_TITLE);
 			setContentView(R.layout.listview);
+			CallListner.needRefresh = true;
 			mainListView = (ListView) findViewById(R.id.listViewID);
 			noRecords = (TextView) findViewById(R.id.noRecordsTextViewID);
 			noRecords.setTypeface(Fonts.BOOK_ANTIQUA);
@@ -69,7 +71,7 @@ public class MainActivity extends Activity implements OnItemClickListener, OnIte
 					RelativeLayout.LayoutParams.MATCH_PARENT,
 					RelativeLayout.LayoutParams.WRAP_CONTENT);
 			layout.addView(mAdView, params);
-			mAdView.loadAd(new AdRequest.Builder().build());
+			mAdView.loadAd(new AdRequest.Builder().build());			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -250,9 +252,12 @@ public class MainActivity extends Activity implements OnItemClickListener, OnIte
 
 		try {
 			super.onResume();
-			calldata.deleteTblData();
-			new ReadLogs().execute();
-			listAdapter.notifyDataSetChanged();
+			if(CallListner.needRefresh){
+				CallListner.needRefresh = false;
+				calldata.deleteTblData();
+				new ReadLogs().execute();
+				listAdapter.notifyDataSetChanged();				
+			}						
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
