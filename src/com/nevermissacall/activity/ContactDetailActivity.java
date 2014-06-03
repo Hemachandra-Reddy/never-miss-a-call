@@ -30,7 +30,7 @@ public class ContactDetailActivity extends Activity implements OnClickListener {
 	private ListView mainListView;
 	private ArrayAdapter<CallLogModel> listAdapter;
 	public ArrayList<CallLogModel> numberlist;
-	private Button callBtn,smsBtn;
+	private Button callBtn;
 	private TextView nameTxt,numberTxt;
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -44,9 +44,7 @@ public class ContactDetailActivity extends Activity implements OnClickListener {
 			NeverMissLogs.e(TAG, "NUMBER:" + phoneNo);
 			mainListView = (ListView) findViewById(R.id.numberListID);
 			callBtn = (Button) findViewById(R.id.callBtnID);
-			smsBtn = (Button) findViewById(R.id.smsBtnID);
 			callBtn.setTypeface(Fonts.BOOK_ANTIQUA);
-			smsBtn.setTypeface(Fonts.BOOK_ANTIQUA);
 			nameTxt = (TextView) findViewById(R.id.nameID);
 			nameTxt.setTypeface(Fonts.BOOK_ANTIQUA, Typeface.BOLD);			
 			numberTxt = (TextView) findViewById(R.id.numberID);
@@ -54,7 +52,6 @@ public class ContactDetailActivity extends Activity implements OnClickListener {
 			nameTxt.setText(name);
 			numberTxt.setText("" + phoneNo);
 			callBtn.setOnClickListener(this);
-			smsBtn.setOnClickListener(this);
 			mainListView.setSmoothScrollbarEnabled(true);
 			getAllEntriesForNumber();
 		} catch (Exception e) {
@@ -93,9 +90,6 @@ public class ContactDetailActivity extends Activity implements OnClickListener {
 						Uri.parse(phoneNumber));
 				startActivity(intent);
 				break;
-			case R.id.smsBtnID:
-				startActivity(new Intent(Intent.ACTION_VIEW, Uri.fromParts(
-						"sms", phoneNo.toString(), null)));
 			default:
 				break;
 			}
