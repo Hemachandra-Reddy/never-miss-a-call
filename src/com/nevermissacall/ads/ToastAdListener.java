@@ -3,7 +3,6 @@
 package com.nevermissacall.ads;
 
 import android.content.Context;
-import android.widget.Toast;
 
 import com.google.android.gms.ads.AdListener;
 import com.google.android.gms.ads.AdRequest;
