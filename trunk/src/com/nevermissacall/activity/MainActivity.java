@@ -46,7 +46,8 @@ public class MainActivity extends Activity implements OnItemClickListener, OnIte
 	public static final String TAG = "MainActivity";
 	ProgressDialog dialog;
 	private AdView mAdView;
-	private TextView noRecords;
+	private TextView noRecords;	
+	
 	/** Called when the activity is first created. */
 	@Override
 	public void onCreate(Bundle icicle) {
@@ -252,11 +253,17 @@ public class MainActivity extends Activity implements OnItemClickListener, OnIte
 
 		try {
 			super.onResume();
+			if(Fonts.isRecordDeleted) {
+				updateListAdapter(Fonts.deletedNumber);
+				Fonts.isRecordDeleted = false;
+				Fonts.deletedNumber = null;
+			}
+				
 			if(CallListner.needRefresh){
 				CallListner.needRefresh = false;
 				calldata.deleteTblData();
 				new ReadLogs().execute();
-				listAdapter.notifyDataSetChanged();				
+				listAdapter.notifyDataSetChanged();
 			}						
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -292,6 +299,7 @@ public class MainActivity extends Activity implements OnItemClickListener, OnIte
 					MainActivity.this.getContentResolver().delete(allCalls, queryString, null);
 					
 				}
+				
 				listAdapter.remove(listAdapter.getItem(position));
 				listAdapter.notifyDataSetChanged();
 				if (listAdapter.isEmpty()) {
@@ -309,4 +317,23 @@ public class MainActivity extends Activity implements OnItemClickListener, OnIte
 
 		return true;
 	}
+	
+	public void updateListAdapter(String number) {
+		int index = 0;
+		int count = listAdapter.getCount();
+		
+		for(;index < count; index++) {
+			CallLogModel tmp = listAdapter.getItem(index);
+			String tmpNumber = tmp.getNumber().trim();
+			if(tmpNumber.equals(number)) {
+				listAdapter.remove(listAdapter.getItem(index));
+				listAdapter.notifyDataSetChanged();
+				if (listAdapter.isEmpty()) {
+					noRecords.setVisibility(View.VISIBLE);
+				}
+				return;
+			}
+		}
+	}
+	
 }

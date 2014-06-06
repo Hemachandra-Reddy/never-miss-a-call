@@ -29,25 +29,34 @@ public class ContactDetailArrayAdapter extends ArrayAdapter<CallLogModel> {
 
 		try {
 			final CallLogModel callLogModel = this.getItem(position);
-			TextView dateTV;
+			TextView dateTV,timeTV;
 			convertView = inflater.inflate(R.layout.number_list_item, null);
-			dateTV = (TextView) convertView.findViewById(R.id.dateTV);
+			dateTV = (TextView) convertView.findViewById(R.id.dateTVID);
+			timeTV = (TextView) convertView.findViewById(R.id.timeTVID);
 			dateTV.setTypeface(Fonts.BOOK_ANTIQUA);
-			String displayDate = getDateTime(callLogModel.getDate());
+			timeTV.setTypeface(Fonts.BOOK_ANTIQUA);
+			String displayDate = getDateTime(callLogModel.getDate(),true);
+			String displayTime = getDateTime(callLogModel.getDate(),false);
 			dateTV.setText(displayDate);
+			timeTV.setText(displayTime);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		return convertView;
 	}
 	@SuppressLint("SimpleDateFormat")
-	private String getDateTime(long milliseconds) {
+	private String getDateTime(long milliseconds,boolean giveDate) {
 		Date date = null;
 		try {
 			date = new Date(milliseconds);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}		
-		return new SimpleDateFormat("dd-MMM-yy                    HH:mm:ss").format(date);
+		if(giveDate){
+			return new SimpleDateFormat("dd-MMM-yy").format(date);
+		}else{
+			return new SimpleDateFormat("HH:mm:ss").format(date);	
+		}
+		
 	}
 }

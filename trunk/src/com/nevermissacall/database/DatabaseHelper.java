@@ -169,8 +169,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 				tmpDate = tmpEntry.getDate();
 				long rowcount = Integer.MAX_VALUE;
 				tmpQuery = "SELECT * FROM " + CALL_LOG_TBL
-						+ " as c where c.calltype != 2 and c.number= "
-						+ tmpNumber + " and " + tmpDate
+						+ " as c where c.calltype != 2 and c.number LIKE '%"
+						+ tmpNumber + "%' and " + tmpDate
 						+ " < c.date and c.duration > 0";
 				callLogCursor = db.rawQuery(tmpQuery, null);
 				callLogCursor.moveToFirst();
