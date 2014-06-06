@@ -2,6 +2,7 @@ package com.nevermissacall.activity;
 
 import java.util.ArrayList;
 
+import com.google.android.gms.internal.ed;
 import com.nevermissacall.R;
 import com.nevermissacall.adapters.ContactDetailArrayAdapter;
 import com.nevermissacall.data.CallLogModel;
@@ -11,14 +12,20 @@ import com.nevermissacall.utils.NeverMissLogs;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.database.Cursor;
 import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.View;
 import android.view.Window;
 import android.view.View.OnClickListener;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -30,8 +37,12 @@ public class ContactDetailActivity extends Activity implements OnClickListener {
 	private ListView mainListView;
 	private ArrayAdapter<CallLogModel> listAdapter;
 	public ArrayList<CallLogModel> numberlist;
-	private Button callBtn;
-	private TextView nameTxt,numberTxt;
+	private ImageView expandBtn;
+	private TextView nameTxt,numberTxt,call,edit,delete;
+	private LinearLayout optionsLayout;
+	private boolean optionsVisible = false;
+	private Animation a,b;
+	private Handler handler = null;
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -43,17 +54,30 @@ public class ContactDetailActivity extends Activity implements OnClickListener {
 			phoneNo = intent.getStringExtra("Number");
 			NeverMissLogs.e(TAG, "NUMBER:" + phoneNo);
 			mainListView = (ListView) findViewById(R.id.numberListID);
-			callBtn = (Button) findViewById(R.id.callBtnID);
-			callBtn.setTypeface(Fonts.BOOK_ANTIQUA);
+			expandBtn = (ImageView) findViewById(R.id.callImageViewID);
+			call = (TextView) findViewById(R.id.callID);
+			edit = (TextView) findViewById(R.id.editID);
+			delete = (TextView) findViewById(R.id.deleteID);
+			call.setTypeface(Fonts.BOOK_ANTIQUA);
+			edit.setTypeface(Fonts.BOOK_ANTIQUA);
+			delete.setTypeface(Fonts.BOOK_ANTIQUA);
+			call.setOnClickListener(this);
+			edit.setOnClickListener(this);
+			delete.setOnClickListener(this);
+			optionsLayout = (LinearLayout)findViewById(R.id.optionsLayoutID);
+			optionsLayout.setOnClickListener(this);
 			nameTxt = (TextView) findViewById(R.id.nameID);
 			nameTxt.setTypeface(Fonts.BOOK_ANTIQUA, Typeface.BOLD);			
 			numberTxt = (TextView) findViewById(R.id.numberID);
 			numberTxt.setTypeface(Fonts.BOOK_ANTIQUA);
 			nameTxt.setText(name);
 			numberTxt.setText("" + phoneNo);
-			callBtn.setOnClickListener(this);
+			expandBtn.setOnClickListener(this);
 			mainListView.setSmoothScrollbarEnabled(true);
 			getAllEntriesForNumber();
+			a = AnimationUtils.loadAnimation(this, R.anim.slide_down);
+			b = AnimationUtils.loadAnimation(this, R.anim.slide_up);
+			handler = new Handler();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -80,15 +104,40 @@ public class ContactDetailActivity extends Activity implements OnClickListener {
 	public void onClick(View v) {
 		try {
 			switch (v.getId()) {
-			case R.id.callBtnID:
-				if(phoneNo.startsWith("91")) {
-					phoneNo = "+" + phoneNo;
+			case R.id.callID:
+				handleCallClick();
+				break;
+			case R.id.editID:
+				handleEditClick();
+				break;
+			case R.id.deleteID:
+				handleDeleteClick();
+				break;
+			case R.id.callImageViewID:
+				if(optionsVisible){
+					expandBtn.setImageResource(R.drawable.ic_down);
+					a.reset();
+					b.reset();
+					optionsLayout.clearAnimation();
+					optionsLayout.startAnimation(b);
+					handler.postDelayed(new Runnable() {
+						@Override
+						public void run() {
+							optionsLayout.setVisibility(View.GONE);
+						}
+					}, 250);
+
+					optionsVisible = false;
+				}else{
+					expandBtn.setImageResource(R.drawable.ic_up);
+					optionsLayout.setVisibility(View.VISIBLE);	
+					a.reset();
+					b.reset();
+					optionsLayout.clearAnimation();
+					optionsLayout.startAnimation(a);
+					optionsVisible = true;
 				}
-					
-				String phoneNumber = "tel:" + phoneNo;
-				Intent intent = new Intent(Intent.ACTION_CALL,
-						Uri.parse(phoneNumber));
-				startActivity(intent);
+
 				break;
 			default:
 				break;
@@ -96,5 +145,34 @@ public class ContactDetailActivity extends Activity implements OnClickListener {
 		} catch (Exception e) {
 			e.getMessage();
 		}
+	}
+	private void handleDeleteClick() {
+		Uri allCalls = Uri.parse("content://call_log/calls");
+		@SuppressWarnings("deprecation")
+		Cursor c = managedQuery(allCalls, null, null, null, null);
+		if(c.getCount() == 0) {
+			finish();
+		}
+		
+		while(c.moveToNext())
+		{
+			String numbString = "+"+phoneNo.trim();
+			String queryString= "NUMBER='"+numbString+"' AND type=3" ;
+			ContactDetailActivity.this.getContentResolver().delete(allCalls, queryString, null);
+			Fonts.isRecordDeleted = true;
+			Fonts.deletedNumber = phoneNo;
+		}
+		
+		finish();
+	}
+	private void handleEditClick() {
+		String phoneNumber = "tel:" + phoneNo;
+		Intent intent = new Intent(Intent.ACTION_DIAL,Uri.parse(phoneNumber));
+		startActivity(intent);
+	}
+	private void handleCallClick() {
+		String phoneNumber = "tel:" + phoneNo;
+		Intent intent = new Intent(Intent.ACTION_CALL,Uri.parse(phoneNumber));
+		startActivity(intent);
 	}
 }
