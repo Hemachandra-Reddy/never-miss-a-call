@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
     <color name="RED">#FE2E2E</color>
     <color name="LIGHT_GREEN">#69CFA0</color>
-     <color name="HOLO_BLUE">#058ebc</color>
+    <color name="HOLO_BLUE">#058ebc</color>
+    <color name="LIGHT_GRAY">#D1CECE</color>
+
 </resources>

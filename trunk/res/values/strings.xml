@@ -7,4 +7,5 @@
 	<string name="ad_unit_id">"a15371b629f249b"</string>
 	<string name="call">Call</string>
 	<string name="sms">Message</string>
+	<string name="NoRecordsMessage">No Missed Calls!!</string>
 </resources>
