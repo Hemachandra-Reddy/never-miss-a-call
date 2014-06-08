@@ -50,6 +50,35 @@ theme attribute (in the form
 containing a value of this type.
          */
         public static final int adUnitId=0x7f010002;
+        /** <p>Must be a color value, in the form of "<code>#<i>rgb</i></code>", "<code>#<i>argb</i></code>",
+"<code>#<i>rrggbb</i></code>", or "<code>#<i>aarrggbb</i></code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static final int barColor=0x7f010014;
+        /** <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
+Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
+in (inches), mm (millimeters).
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static final int barLength=0x7f01001c;
+        /** <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
+Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
+in (inches), mm (millimeters).
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static final int barWidth=0x7f01001b;
         /** <p>Must be a floating point value, such as "<code>1.2</code>".
 <p>This may also be a reference to a resource (in the form
 "<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
@@ -90,6 +119,42 @@ theme attribute (in the form
 containing a value of this type.
          */
         public static final int cameraZoom=0x7f010008;
+        /** <p>Must be a color value, in the form of "<code>#<i>rgb</i></code>", "<code>#<i>argb</i></code>",
+"<code>#<i>rrggbb</i></code>", or "<code>#<i>aarrggbb</i></code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static final int circleColor=0x7f010019;
+        /** <p>Must be a color value, in the form of "<code>#<i>rgb</i></code>", "<code>#<i>argb</i></code>",
+"<code>#<i>rrggbb</i></code>", or "<code>#<i>aarrggbb</i></code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static final int contourColor=0x7f01001d;
+        /** <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
+Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
+in (inches), mm (millimeters).
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static final int contourSize=0x7f01001e;
+        /** <p>Must be an integer value, such as "<code>100</code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static final int delayMillis=0x7f010018;
         /** <p>Must be one of the following constant values.</p>
 <table>
 <colgroup align="left" />
@@ -104,6 +169,72 @@ containing a value of this type.
 </table>
          */
         public static final int mapType=0x7f010003;
+        /** <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
+Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
+in (inches), mm (millimeters).
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static final int radius=0x7f01001a;
+        /** <p>Must be a color value, in the form of "<code>#<i>rgb</i></code>", "<code>#<i>argb</i></code>",
+"<code>#<i>rrggbb</i></code>", or "<code>#<i>aarrggbb</i></code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static final int rimColor=0x7f010015;
+        /** <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
+Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
+in (inches), mm (millimeters).
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static final int rimWidth=0x7f010016;
+        /** <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
+Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
+in (inches), mm (millimeters).
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static final int spinSpeed=0x7f010017;
+        /** <p>Must be a string value, using '\\;' to escape characters such as '\\n' or '\\uxxxx' for a unicode character.
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static final int text=0x7f010011;
+        /** <p>Must be a color value, in the form of "<code>#<i>rgb</i></code>", "<code>#<i>argb</i></code>",
+"<code>#<i>rrggbb</i></code>", or "<code>#<i>aarrggbb</i></code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static final int textColor=0x7f010012;
+        /** <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
+Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
+in (inches), mm (millimeters).
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static final int textSize=0x7f010013;
         /** <p>Must be a boolean value, either "<code>true</code>" or "<code>false</code>".
 <p>This may also be a reference to a resource (in the form
 "<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
@@ -171,6 +302,7 @@ containing a value of this type.
     }
     public static final class color {
         public static final int HOLO_BLUE=0x7f05000c;
+        public static final int LIGHT_GRAY=0x7f05000d;
         public static final int LIGHT_GREEN=0x7f05000b;
         public static final int RED=0x7f05000a;
         public static final int common_action_bar_splitter=0x7f050009;
@@ -185,8 +317,8 @@ containing a value of this type.
         public static final int common_signin_btn_light_text_disabled=0x7f050006;
         public static final int common_signin_btn_light_text_focused=0x7f050007;
         public static final int common_signin_btn_light_text_pressed=0x7f050005;
-        public static final int common_signin_btn_text_dark=0x7f05000d;
-        public static final int common_signin_btn_text_light=0x7f05000e;
+        public static final int common_signin_btn_text_dark=0x7f05000e;
+        public static final int common_signin_btn_text_light=0x7f05000f;
     }
     public static final class dimen {
         /**  Default screen margins, per the Android Design guidelines. 
@@ -195,12 +327,12 @@ containing a value of this type.
          screen margins) for sw720dp devices (e.g. 10" tablets) in landscape here.
     
          */
-        public static final int activity_horizontal_margin=0x7f090000;
-        public static final int activity_vertical_margin=0x7f090001;
+        public static final int activity_horizontal_margin=0x7f0a0000;
+        public static final int activity_vertical_margin=0x7f0a0001;
     }
     public static final class drawable {
-        public static final int call=0x7f020000;
-        public static final int call1=0x7f020001;
+        public static final int app_icon=0x7f020000;
+        public static final int call=0x7f020001;
         public static final int common_signin_btn_icon_dark=0x7f020002;
         public static final int common_signin_btn_icon_disabled_dark=0x7f020003;
         public static final int common_signin_btn_icon_disabled_focus_dark=0x7f020004;
@@ -227,24 +359,20 @@ containing a value of this type.
         public static final int common_signin_btn_text_pressed_light=0x7f020019;
         public static final int delete=0x7f02001a;
         public static final int edit=0x7f02001b;
-        public static final int ic_call1=0x7f02001c;
-        public static final int ic_down=0x7f02001d;
-        public static final int ic_down_arrow=0x7f02001e;
-        public static final int ic_launcher=0x7f02001f;
-        public static final int ic_plusone_medium_off_client=0x7f020020;
-        public static final int ic_plusone_small_off_client=0x7f020021;
-        public static final int ic_plusone_standard_off_client=0x7f020022;
-        public static final int ic_plusone_tall_off_client=0x7f020023;
-        public static final int ic_up=0x7f020024;
-        public static final int icon=0x7f020025;
+        public static final int ic_down=0x7f02001c;
+        public static final int ic_plusone_medium_off_client=0x7f02001d;
+        public static final int ic_plusone_small_off_client=0x7f02001e;
+        public static final int ic_plusone_standard_off_client=0x7f02001f;
+        public static final int ic_plusone_tall_off_client=0x7f020020;
+        public static final int ic_up=0x7f020021;
     }
     public static final class id {
         public static final int RelativeLayout1=0x7f06000d;
-        public static final int action_settings=0x7f060017;
+        public static final int action_settings=0x7f060018;
         public static final int callID=0x7f060009;
         public static final int callImageViewID=0x7f060007;
         public static final int dateTV=0x7f060010;
-        public static final int dateTVID=0x7f060014;
+        public static final int dateTVID=0x7f060015;
         public static final int deleteID=0x7f06000b;
         public static final int editID=0x7f06000a;
         public static final int hybrid=0x7f060004;
@@ -252,17 +380,18 @@ containing a value of this type.
         public static final int mainLayoutID=0x7f060011;
         public static final int nameID=0x7f060005;
         public static final int nameTV=0x7f06000e;
-        public static final int neverMissTxtID=0x7f060016;
-        public static final int noRecordsTextViewID=0x7f060013;
+        public static final int neverMissTxtID=0x7f060017;
+        public static final int noRecordsTextViewID=0x7f060014;
         public static final int none=0x7f060000;
         public static final int normal=0x7f060001;
         public static final int numberID=0x7f060006;
         public static final int numberListID=0x7f06000c;
         public static final int numberTV=0x7f06000f;
         public static final int optionsLayoutID=0x7f060008;
+        public static final int progressBarTwo=0x7f060013;
         public static final int satellite=0x7f060002;
         public static final int terrain=0x7f060003;
-        public static final int timeTVID=0x7f060015;
+        public static final int timeTVID=0x7f060016;
     }
     public static final class integer {
         public static final int google_play_services_version=0x7f080000;
@@ -279,6 +408,7 @@ containing a value of this type.
         public static final int main=0x7f0b0000;
     }
     public static final class string {
+        public static final int NoRecordsMessage=0x7f070021;
         public static final int action_settings=0x7f07001c;
         public static final int ad_unit_id=0x7f07001e;
         public static final int app_name=0x7f07001b;
@@ -405,11 +535,12 @@ containing a value of this type.
     
  API 14 theme customizations can go here. 
          */
-        public static final int AppBaseTheme=0x7f0a0000;
+        public static final int AppBaseTheme=0x7f090001;
         /**  Application theme. 
  All customizations that are NOT specific to a particular API-level can go here. 
          */
-        public static final int AppTheme=0x7f0a0001;
+        public static final int AppTheme=0x7f090002;
+        public static final int ThemeDialogCustom=0x7f090000;
     }
     public static final class styleable {
         /** Attributes that can be used with a AdsAttrs.
@@ -731,5 +862,262 @@ containing a value of this type.
           @attr name com.nevermissacall:zOrderOnTop
         */
         public static final int MapAttrs_zOrderOnTop = 13;
+        /** Attributes that can be used with a ProgressWheel.
+           <p>Includes the following attributes:</p>
+           <table>
+           <colgroup align="left" />
+           <colgroup align="left" />
+           <tr><th>Attribute</th><th>Description</th></tr>
+           <tr><td><code>{@link #ProgressWheel_barColor com.nevermissacall:barColor}</code></td><td></td></tr>
+           <tr><td><code>{@link #ProgressWheel_barLength com.nevermissacall:barLength}</code></td><td></td></tr>
+           <tr><td><code>{@link #ProgressWheel_barWidth com.nevermissacall:barWidth}</code></td><td></td></tr>
+           <tr><td><code>{@link #ProgressWheel_circleColor com.nevermissacall:circleColor}</code></td><td></td></tr>
+           <tr><td><code>{@link #ProgressWheel_contourColor com.nevermissacall:contourColor}</code></td><td></td></tr>
+           <tr><td><code>{@link #ProgressWheel_contourSize com.nevermissacall:contourSize}</code></td><td></td></tr>
+           <tr><td><code>{@link #ProgressWheel_delayMillis com.nevermissacall:delayMillis}</code></td><td></td></tr>
+           <tr><td><code>{@link #ProgressWheel_radius com.nevermissacall:radius}</code></td><td></td></tr>
+           <tr><td><code>{@link #ProgressWheel_rimColor com.nevermissacall:rimColor}</code></td><td></td></tr>
+           <tr><td><code>{@link #ProgressWheel_rimWidth com.nevermissacall:rimWidth}</code></td><td></td></tr>
+           <tr><td><code>{@link #ProgressWheel_spinSpeed com.nevermissacall:spinSpeed}</code></td><td></td></tr>
+           <tr><td><code>{@link #ProgressWheel_text com.nevermissacall:text}</code></td><td></td></tr>
+           <tr><td><code>{@link #ProgressWheel_textColor com.nevermissacall:textColor}</code></td><td></td></tr>
+           <tr><td><code>{@link #ProgressWheel_textSize com.nevermissacall:textSize}</code></td><td></td></tr>
+           </table>
+           @see #ProgressWheel_barColor
+           @see #ProgressWheel_barLength
+           @see #ProgressWheel_barWidth
+           @see #ProgressWheel_circleColor
+           @see #ProgressWheel_contourColor
+           @see #ProgressWheel_contourSize
+           @see #ProgressWheel_delayMillis
+           @see #ProgressWheel_radius
+           @see #ProgressWheel_rimColor
+           @see #ProgressWheel_rimWidth
+           @see #ProgressWheel_spinSpeed
+           @see #ProgressWheel_text
+           @see #ProgressWheel_textColor
+           @see #ProgressWheel_textSize
+         */
+        public static final int[] ProgressWheel = {
+            0x7f010011, 0x7f010012, 0x7f010013, 0x7f010014,
+            0x7f010015, 0x7f010016, 0x7f010017, 0x7f010018,
+            0x7f010019, 0x7f01001a, 0x7f01001b, 0x7f01001c,
+            0x7f01001d, 0x7f01001e
+        };
+        /**
+          <p>This symbol is the offset where the {@link com.nevermissacall.R.attr#barColor}
+          attribute's value can be found in the {@link #ProgressWheel} array.
+
+
+          <p>Must be a color value, in the form of "<code>#<i>rgb</i></code>", "<code>#<i>argb</i></code>",
+"<code>#<i>rrggbb</i></code>", or "<code>#<i>aarrggbb</i></code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          @attr name com.nevermissacall:barColor
+        */
+        public static final int ProgressWheel_barColor = 3;
+        /**
+          <p>This symbol is the offset where the {@link com.nevermissacall.R.attr#barLength}
+          attribute's value can be found in the {@link #ProgressWheel} array.
+
+
+          <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
+Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
+in (inches), mm (millimeters).
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          @attr name com.nevermissacall:barLength
+        */
+        public static final int ProgressWheel_barLength = 11;
+        /**
+          <p>This symbol is the offset where the {@link com.nevermissacall.R.attr#barWidth}
+          attribute's value can be found in the {@link #ProgressWheel} array.
+
+
+          <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
+Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
+in (inches), mm (millimeters).
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          @attr name com.nevermissacall:barWidth
+        */
+        public static final int ProgressWheel_barWidth = 10;
+        /**
+          <p>This symbol is the offset where the {@link com.nevermissacall.R.attr#circleColor}
+          attribute's value can be found in the {@link #ProgressWheel} array.
+
+
+          <p>Must be a color value, in the form of "<code>#<i>rgb</i></code>", "<code>#<i>argb</i></code>",
+"<code>#<i>rrggbb</i></code>", or "<code>#<i>aarrggbb</i></code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          @attr name com.nevermissacall:circleColor
+        */
+        public static final int ProgressWheel_circleColor = 8;
+        /**
+          <p>This symbol is the offset where the {@link com.nevermissacall.R.attr#contourColor}
+          attribute's value can be found in the {@link #ProgressWheel} array.
+
+
+          <p>Must be a color value, in the form of "<code>#<i>rgb</i></code>", "<code>#<i>argb</i></code>",
+"<code>#<i>rrggbb</i></code>", or "<code>#<i>aarrggbb</i></code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          @attr name com.nevermissacall:contourColor
+        */
+        public static final int ProgressWheel_contourColor = 12;
+        /**
+          <p>This symbol is the offset where the {@link com.nevermissacall.R.attr#contourSize}
+          attribute's value can be found in the {@link #ProgressWheel} array.
+
+
+          <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
+Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
+in (inches), mm (millimeters).
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          @attr name com.nevermissacall:contourSize
+        */
+        public static final int ProgressWheel_contourSize = 13;
+        /**
+          <p>This symbol is the offset where the {@link com.nevermissacall.R.attr#delayMillis}
+          attribute's value can be found in the {@link #ProgressWheel} array.
+
+
+          <p>Must be an integer value, such as "<code>100</code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          @attr name com.nevermissacall:delayMillis
+        */
+        public static final int ProgressWheel_delayMillis = 7;
+        /**
+          <p>This symbol is the offset where the {@link com.nevermissacall.R.attr#radius}
+          attribute's value can be found in the {@link #ProgressWheel} array.
+
+
+          <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
+Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
+in (inches), mm (millimeters).
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          @attr name com.nevermissacall:radius
+        */
+        public static final int ProgressWheel_radius = 9;
+        /**
+          <p>This symbol is the offset where the {@link com.nevermissacall.R.attr#rimColor}
+          attribute's value can be found in the {@link #ProgressWheel} array.
+
+
+          <p>Must be a color value, in the form of "<code>#<i>rgb</i></code>", "<code>#<i>argb</i></code>",
+"<code>#<i>rrggbb</i></code>", or "<code>#<i>aarrggbb</i></code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          @attr name com.nevermissacall:rimColor
+        */
+        public static final int ProgressWheel_rimColor = 4;
+        /**
+          <p>This symbol is the offset where the {@link com.nevermissacall.R.attr#rimWidth}
+          attribute's value can be found in the {@link #ProgressWheel} array.
+
+
+          <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
+Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
+in (inches), mm (millimeters).
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          @attr name com.nevermissacall:rimWidth
+        */
+        public static final int ProgressWheel_rimWidth = 5;
+        /**
+          <p>This symbol is the offset where the {@link com.nevermissacall.R.attr#spinSpeed}
+          attribute's value can be found in the {@link #ProgressWheel} array.
+
+
+          <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
+Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
+in (inches), mm (millimeters).
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          @attr name com.nevermissacall:spinSpeed
+        */
+        public static final int ProgressWheel_spinSpeed = 6;
+        /**
+          <p>This symbol is the offset where the {@link com.nevermissacall.R.attr#text}
+          attribute's value can be found in the {@link #ProgressWheel} array.
+
+
+          <p>Must be a string value, using '\\;' to escape characters such as '\\n' or '\\uxxxx' for a unicode character.
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          @attr name com.nevermissacall:text
+        */
+        public static final int ProgressWheel_text = 0;
+        /**
+          <p>This symbol is the offset where the {@link com.nevermissacall.R.attr#textColor}
+          attribute's value can be found in the {@link #ProgressWheel} array.
+
+
+          <p>Must be a color value, in the form of "<code>#<i>rgb</i></code>", "<code>#<i>argb</i></code>",
+"<code>#<i>rrggbb</i></code>", or "<code>#<i>aarrggbb</i></code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          @attr name com.nevermissacall:textColor
+        */
+        public static final int ProgressWheel_textColor = 1;
+        /**
+          <p>This symbol is the offset where the {@link com.nevermissacall.R.attr#textSize}
+          attribute's value can be found in the {@link #ProgressWheel} array.
+
+
+          <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
+Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
+in (inches), mm (millimeters).
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          @attr name com.nevermissacall:textSize
+        */
+        public static final int ProgressWheel_textSize = 2;
     };
 }

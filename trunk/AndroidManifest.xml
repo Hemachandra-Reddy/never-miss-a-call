@@ -6,7 +6,7 @@
 
     <uses-sdk
         android:minSdkVersion="11"
-        android:targetSdkVersion="18" />
+        android:targetSdkVersion="19" />
 
     <uses-permission android:name="android.permission.READ_CONTACTS" />
     <uses-permission android:name="android.permission.READ_CALL_LOG" />
@@ -27,7 +27,7 @@
         <meta-data
             android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />
-        <!-- android:value="4323000" -->
+        
         <activity
             android:name="com.nevermissacall.activity.SplashScreenActivity"
             android:configChanges="orientation|screenSize|keyboardHidden|keyboard|locale"

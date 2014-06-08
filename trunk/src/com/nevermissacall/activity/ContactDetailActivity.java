@@ -2,14 +2,6 @@ package com.nevermissacall.activity;
 
 import java.util.ArrayList;
 
-import com.google.android.gms.internal.ed;
-import com.nevermissacall.R;
-import com.nevermissacall.adapters.ContactDetailArrayAdapter;
-import com.nevermissacall.data.CallLogModel;
-import com.nevermissacall.database.DatabaseHelper;
-import com.nevermissacall.utils.Fonts;
-import com.nevermissacall.utils.NeverMissLogs;
-
 import android.app.Activity;
 import android.content.Intent;
 import android.database.Cursor;
@@ -18,16 +10,23 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
-import android.view.Window;
 import android.view.View.OnClickListener;
+import android.view.Window;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
+
+import com.nevermissacall.R;
+import com.nevermissacall.adapters.ContactDetailArrayAdapter;
+import com.nevermissacall.data.CallLogModel;
+import com.nevermissacall.database.DatabaseHelper;
+import com.nevermissacall.utils.Fonts;
+import com.nevermissacall.utils.Globals;
+import com.nevermissacall.utils.NeverMissLogs;
 
 public class ContactDetailActivity extends Activity implements OnClickListener {
 	private String TAG="ContactDetailActivity";
@@ -159,8 +158,8 @@ public class ContactDetailActivity extends Activity implements OnClickListener {
 			String numbString = "+"+phoneNo.trim();
 			String queryString= "NUMBER='"+numbString+"' AND type=3" ;
 			ContactDetailActivity.this.getContentResolver().delete(allCalls, queryString, null);
-			Fonts.isRecordDeleted = true;
-			Fonts.deletedNumber = phoneNo;
+			Globals.isRecordDeleted = true;
+			Globals.deletedNumber = phoneNo;
 		}
 		
 		finish();
@@ -169,8 +168,17 @@ public class ContactDetailActivity extends Activity implements OnClickListener {
 		String phoneNumber = "tel:" + phoneNo;
 		Intent intent = new Intent(Intent.ACTION_DIAL,Uri.parse(phoneNumber));
 		startActivity(intent);
+		if(true) {
+			
+		}
+			
 	}
 	private void handleCallClick() {
+		if(phoneNo.length() > 10) {
+			int len = phoneNo.length();
+			phoneNo = phoneNo.substring((len - 10), (len));
+		}
+		phoneNo = "0"+phoneNo;
 		String phoneNumber = "tel:" + phoneNo;
 		Intent intent = new Intent(Intent.ACTION_CALL,Uri.parse(phoneNumber));
 		startActivity(intent);

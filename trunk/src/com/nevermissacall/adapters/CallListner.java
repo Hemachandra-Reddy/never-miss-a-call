@@ -13,7 +13,6 @@ public class CallListner extends BroadcastReceiver {
 	public void onReceive(Context context, Intent intent) {
         TelephonyManager tmgr = (TelephonyManager) context.getSystemService(Context.TELEPHONY_SERVICE);
         MyPhoneStateListener PhoneListener = new MyPhoneStateListener();        
-        // Register listener for LISTEN_CALL_STATE
         tmgr.listen(PhoneListener, PhoneStateListener.LISTEN_CALL_STATE);		
 	}
 
