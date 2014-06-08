@@ -36,7 +36,7 @@ import com.nevermissacall.utils.Globals;
 import com.nevermissacall.utils.NeverMissLogs;
 import com.nevermissacall.utils.ProgressWheel;
 
-public class MainActivity extends Activity implements OnItemClickListener, OnItemLongClickListener{	
+public class MainActivity extends Activity implements OnItemClickListener{	
 
 	public DatabaseHelper calldata;
 	private ListView mainListView;
@@ -64,7 +64,6 @@ public class MainActivity extends Activity implements OnItemClickListener, OnIte
 			noRecords.setTypeface(Fonts.BOOK_ANTIQUA);
 			mainListView.setSmoothScrollbarEnabled(true);
 			mainListView.setOnItemClickListener(this);
-			mainListView.setOnItemLongClickListener(this);
 			calldata = new DatabaseHelper(this);
 			mAdView = new AdView(this);
 			mAdView.setAdUnitId(getResources().getString(R.string.ad_unit_id));
@@ -285,44 +284,6 @@ public class MainActivity extends Activity implements OnItemClickListener, OnIte
 		}
 	}
 
-	@Override
-	public boolean onItemLongClick(AdapterView<?> parent, View view,
-			final int position, long id) {
-		AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
-		alertDialogBuilder.setTitle("Delete entry?");
-		alertDialogBuilder.setCancelable(true)
-		.setPositiveButton("Yes",new DialogInterface.OnClickListener() {
-			public void onClick(DialogInterface dialog,int id) {
-				Uri allCalls = Uri.parse("content://call_log/calls");
-				@SuppressWarnings("deprecation")
-				Cursor c = managedQuery(allCalls, null, null, null, null);
-				while(c.moveToNext())
-				{
-					CallLogModel calllog = (CallLogModel) mainListView.getItemAtPosition(position);
-					String numbString = "+"+calllog.getNumber().trim();
-					String queryString= "NUMBER='"+numbString+"' AND type=3" ;
-					MainActivity.this.getContentResolver().delete(allCalls, queryString, null);
-					
-				}
-				
-				listAdapter.remove(listAdapter.getItem(position));
-				listAdapter.notifyDataSetChanged();
-				if (listAdapter.isEmpty()) {
-					noRecords.setVisibility(View.VISIBLE);
-				}
-			}
-		})
-		.setNegativeButton("No",new DialogInterface.OnClickListener() {
-			public void onClick(DialogInterface dialog,int id) {
-				dialog.cancel();
-			}
-		});
-		AlertDialog alertDialog = alertDialogBuilder.create();
-		alertDialog.show();
-
-		return true;
-	}
-	
 	public void updateListAdapter(String number) {
 		int index = 0;
 		int count = listAdapter.getCount();
