@@ -18,7 +18,7 @@ import com.nevermissacall.utils.Fonts;
 public class SplashScreenActivity extends Activity {	
 	ProgressDialog dialog;
 	private TextView logoText;
-	/** Called when the activity is first created. */
+
 	@Override
 	public void onCreate(Bundle icicle) {
 		super.onCreate(icicle);
@@ -39,7 +39,6 @@ public class SplashScreenActivity extends Activity {
 	@Override
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 		try {
-			// TODO Auto-generated method stub
 			super.onActivityResult(requestCode, resultCode, data);
 			if (requestCode == 123) {
 				finish();
@@ -65,15 +64,15 @@ public class SplashScreenActivity extends Activity {
 			}
 		}
 	};
- @Override
-public boolean isFinishing() {
-	 try {
-		if (dialog != null) {
-			dialog.dismiss();
+	@Override
+	public boolean isFinishing() {
+		try {
+			if (dialog != null) {
+				dialog.dismiss();
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
-	} catch (Exception e) {
-		e.printStackTrace();
+		return super.isFinishing();
 	}
-	return super.isFinishing();
-}
 }

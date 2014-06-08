@@ -1,4 +1,4 @@
-package com.nevermissacall.activity;
+package com.nevermissacall.utils;
 
 import com.nevermissacall.R;
 import com.nevermissacall.utils.Fonts;

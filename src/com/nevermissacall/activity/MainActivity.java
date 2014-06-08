@@ -32,7 +32,9 @@ import com.nevermissacall.ads.ToastAdListener;
 import com.nevermissacall.data.CallLogModel;
 import com.nevermissacall.database.DatabaseHelper;
 import com.nevermissacall.utils.Fonts;
+import com.nevermissacall.utils.Globals;
 import com.nevermissacall.utils.NeverMissLogs;
+import com.nevermissacall.utils.ProgressWheel;
 
 public class MainActivity extends Activity implements OnItemClickListener, OnItemLongClickListener{	
 
@@ -47,8 +49,8 @@ public class MainActivity extends Activity implements OnItemClickListener, OnIte
 	ProgressDialog dialog;
 	private AdView mAdView;
 	private TextView noRecords;	
-	
-	/** Called when the activity is first created. */
+	private ProgressWheel pw;
+
 	@Override
 	public void onCreate(Bundle icicle) {
 		super.onCreate(icicle);
@@ -56,6 +58,7 @@ public class MainActivity extends Activity implements OnItemClickListener, OnIte
 			this.requestWindowFeature(Window.FEATURE_NO_TITLE);
 			setContentView(R.layout.listview);
 			CallListner.needRefresh = true;
+			pw = (ProgressWheel) findViewById(R.id.progressBarTwo);
 			mainListView = (ListView) findViewById(R.id.listViewID);
 			noRecords = (TextView) findViewById(R.id.noRecordsTextViewID);
 			noRecords.setTypeface(Fonts.BOOK_ANTIQUA);
@@ -72,7 +75,7 @@ public class MainActivity extends Activity implements OnItemClickListener, OnIte
 					RelativeLayout.LayoutParams.MATCH_PARENT,
 					RelativeLayout.LayoutParams.WRAP_CONTENT);
 			layout.addView(mAdView, params);
-			mAdView.loadAd(new AdRequest.Builder().build());			
+			mAdView.loadAd(new AdRequest.Builder().build());	
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -125,9 +128,6 @@ public class MainActivity extends Activity implements OnItemClickListener, OnIte
 			Cursor callLogCursor = getContentResolver().query(
 					android.provider.CallLog.Calls.CONTENT_URI, null, null,
 					null, android.provider.CallLog.Calls.DEFAULT_SORT_ORDER);
-			/*Cursor callLogCursor = getContentResolver().query(
-					Uri.parse("content://logs/historys"), null, null,
-					null, android.provider.CallLog.Calls.DEFAULT_SORT_ORDER);*/
 			if (callLogCursor != null) {
 				while (callLogCursor.moveToNext()) {
 					int id = callLogCursor.getInt(callLogCursor
@@ -203,14 +203,13 @@ public class MainActivity extends Activity implements OnItemClickListener, OnIte
 		protected void onPreExecute() {
 			try {
 				super.onPreExecute();
-				dialog = ProgressDialog.show(MainActivity.this,
-						"Reading Call Logs...", "Please wait...", true);
-				TextView message = (TextView) dialog.findViewById(android.R.id.message);
-				TextView title = (TextView) dialog.findViewById(android.R.id.title);
-				message.setTypeface(Fonts.BOOK_ANTIQUA);
-				title.setTypeface(Fonts.BOOK_ANTIQUA);
-				dialog.setTitle(title.getText());
-				NeverMissLogs.e("error title", title.getText().toString());
+				if(!pw.isShown()){
+					pw.setVisibility(View.VISIBLE);
+				}
+				mainListView.setAlpha(.2f);
+				noRecords.setAlpha(0f);
+				pw.spin();
+				pw.setText("Reading Call Logs...");
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
@@ -226,7 +225,13 @@ public class MainActivity extends Activity implements OnItemClickListener, OnIte
 		protected void onPostExecute(Void result) {
 			try {
 				super.onPostExecute(result);
-				dialog.dismiss();
+				if(pw.isShown()){
+					pw.setVisibility(View.GONE);
+					mainListView.setAlpha(1f);
+					noRecords.setAlpha(1f);
+				}
+				pw.stopSpinning();
+				pw.setVisibility(View.GONE);
 				incomingcalls = null;
 				outgoingcalls = null;
 				missedcalls = null;
@@ -240,8 +245,8 @@ public class MainActivity extends Activity implements OnItemClickListener, OnIte
 	@Override
 	public boolean isFinishing() {
 		try {
-			if (dialog != null) {
-				dialog.dismiss();
+			if(pw.isShown()){
+				pw.setVisibility(View.GONE);
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -253,10 +258,10 @@ public class MainActivity extends Activity implements OnItemClickListener, OnIte
 
 		try {
 			super.onResume();
-			if(Fonts.isRecordDeleted) {
-				updateListAdapter(Fonts.deletedNumber);
-				Fonts.isRecordDeleted = false;
-				Fonts.deletedNumber = null;
+			if(Globals.isRecordDeleted) {
+				updateListAdapter(Globals.deletedNumber);
+				Globals.isRecordDeleted = false;
+				Globals.deletedNumber = null;
 			}
 				
 			if(CallListner.needRefresh){
@@ -335,5 +340,4 @@ public class MainActivity extends Activity implements OnItemClickListener, OnIte
 			}
 		}
 	}
-	
 }
