@@ -1,6 +1,7 @@
 package com.nevermissacall.database;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -9,7 +10,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
 import com.nevermissacall.data.CallLogModel;
-import com.nevermissacall.utils.NeverMissLogs;
+import com.nevermissacall.utils.*;
 
 public class DatabaseHelper extends SQLiteOpenHelper {
 
@@ -160,10 +161,21 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 			String tmpQuery;
 			Cursor callLogCursor = null;
 			ArrayList<CallLogModel> missedcalls = new ArrayList<CallLogModel>();
+			ArrayList<CallLogModel> incomingcalls = new ArrayList<CallLogModel>();
 			finallist = new ArrayList<CallLogModel>();
 			missedcalls = getCallLog(2, true);
+			incomingcalls = getCallLog(0, true);
+			for (index = 0; index < incomingcalls.size(); index++) {
+				CallLogModel tmpEntry = incomingcalls.get(index);				
+				if (tmpEntry.getDuration() == 0) {
+					missedcalls.add(tmpEntry);
+				}
+			}
+						
+			Collections.sort(missedcalls, new CallLogComparator());
+			
 			SQLiteDatabase db = this.getReadableDatabase();
-			for (; index < missedcalls.size(); index++) {
+			for (index = 0; index < missedcalls.size(); index++) {
 				CallLogModel tmpEntry = missedcalls.get(index);
 				tmpNumber = tmpEntry.getNumber();
 				tmpDate = tmpEntry.getDate();
@@ -179,6 +191,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 					finallist.add(tmpEntry);
 				}
 			}
+									
 			callLogCursor.close();
 			db.close();
 		} catch (Exception e) {
@@ -194,9 +207,21 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 		try {
 			int index = 0;
 			ArrayList<CallLogModel> missedcalls = new ArrayList<CallLogModel>();
+			ArrayList<CallLogModel> incomingcalls = new ArrayList<CallLogModel>();
 			finallist = new ArrayList<CallLogModel>();
 			missedcalls = getCallLog(2, false);
-			for (; index < missedcalls.size(); index++) {
+			incomingcalls = getCallLog(0, true);
+			for (index = 0; index < incomingcalls.size(); index++) {
+				CallLogModel tmpEntry = incomingcalls.get(index);				
+				if ((number.equals(tmpEntry.getNumber())) && 
+						(tmpEntry.getDuration() == 0)) {
+					missedcalls.add(tmpEntry);
+				}
+			}
+						
+			Collections.sort(missedcalls, new CallLogComparator());
+			
+			for (index = 0; index < missedcalls.size(); index++) {
 				CallLogModel tmpEntry = missedcalls.get(index);
 				if(number.equals(tmpEntry.getNumber())) {
 					finallist.add(tmpEntry);
