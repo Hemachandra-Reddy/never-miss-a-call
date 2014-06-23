@@ -161,19 +161,19 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 			String tmpQuery;
 			Cursor callLogCursor = null;
 			ArrayList<CallLogModel> missedcalls = new ArrayList<CallLogModel>();
-			ArrayList<CallLogModel> incomingcalls = new ArrayList<CallLogModel>();
+			ArrayList<CallLogModel> incomingcalls = new ArrayList<CallLogModel>();			
 			finallist = new ArrayList<CallLogModel>();
 			missedcalls = getCallLog(2, true);
-			incomingcalls = getCallLog(0, true);
+			incomingcalls = getCallLog(0, true);			
 			for (index = 0; index < incomingcalls.size(); index++) {
 				CallLogModel tmpEntry = incomingcalls.get(index);				
 				if (tmpEntry.getDuration() == 0) {
 					missedcalls.add(tmpEntry);
 				}
 			}
-						
+
 			Collections.sort(missedcalls, new CallLogComparator());
-			
+
 			SQLiteDatabase db = this.getReadableDatabase();
 			for (index = 0; index < missedcalls.size(); index++) {
 				CallLogModel tmpEntry = missedcalls.get(index);
@@ -191,7 +191,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 					finallist.add(tmpEntry);
 				}
 			}
-									
+
 			callLogCursor.close();
 			db.close();
 		} catch (Exception e) {
@@ -199,11 +199,11 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 		}
 		return finallist;
 	}
-	
+
 	@SuppressWarnings({ "rawtypes", "unchecked" })
 	public ArrayList getAllEntries(String number)
 	{
-		ArrayList<CallLogModel> finallist = null;		
+		ArrayList<CallLogModel> finallist = null;
 		try {
 			int index = 0;
 			ArrayList<CallLogModel> missedcalls = new ArrayList<CallLogModel>();
@@ -218,7 +218,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 					missedcalls.add(tmpEntry);
 				}
 			}
-						
+
 			Collections.sort(missedcalls, new CallLogComparator());
 			
 			for (index = 0; index < missedcalls.size(); index++) {
@@ -232,7 +232,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 		}
 		return finallist;
 	}	
-	
+
 	public void deleteTblData()
 	{
 		try {

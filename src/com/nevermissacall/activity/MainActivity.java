@@ -114,8 +114,7 @@ public class MainActivity extends Activity implements OnItemClickListener{
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-	}		
-
+	}
 
 	private void readCallLogs() {
 
