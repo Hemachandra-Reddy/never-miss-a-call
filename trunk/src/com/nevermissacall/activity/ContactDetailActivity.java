@@ -156,7 +156,7 @@ public class ContactDetailActivity extends Activity implements OnClickListener {
 		while(c.moveToNext())
 		{
 			String numbString = "+"+phoneNo.trim();
-			String queryString= "NUMBER='"+numbString+"' AND type=3" ;
+			String queryString= "NUMBER='"+numbString+"' AND ((type=3 or type=1) AND duration=0)" ;
 			ContactDetailActivity.this.getContentResolver().delete(allCalls, queryString, null);
 			Globals.isRecordDeleted = true;
 			Globals.deletedNumber = phoneNo;
@@ -174,11 +174,13 @@ public class ContactDetailActivity extends Activity implements OnClickListener {
 			
 	}
 	private void handleCallClick() {
-		if(phoneNo.length() > 10) {
-			int len = phoneNo.length();
-			phoneNo = phoneNo.substring((len - 10), (len));
-		}
-		phoneNo = "0"+phoneNo;
+		int len = phoneNo.length();
+		if(len > 10) {
+			if(!(phoneNo.startsWith("0"))) {
+				phoneNo = "+"+phoneNo;		
+			}
+		}	
+		
 		String phoneNumber = "tel:" + phoneNo;
 		Intent intent = new Intent(Intent.ACTION_CALL,Uri.parse(phoneNumber));
 		startActivity(intent);
